@@ -6,6 +6,7 @@ export default class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    this.forceUpdate()
   }
 
   renderLogoutLink() {
@@ -28,9 +29,7 @@ export default class Header extends Component {
           </Link>
         </h1>
         <span className='Header_tagline'>Seize the Weekend</span>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : <></>}
+        {TokenService.hasAuthToken() && this.renderLogoutLink()}
       </nav>
     </>
   }

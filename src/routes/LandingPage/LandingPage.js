@@ -35,7 +35,7 @@ export default class LandingPage extends Component {
         user_name.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.authToken)
-        //this.handleLoginSuccess()
+        this.props.history.push('/Tasks')
       })
       .catch(res => {
         this.setState({error: res.error})

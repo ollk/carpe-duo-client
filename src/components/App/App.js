@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
-import LandingPage from '../LandingPage/LandingPage';
-import Registration from '../Registration/Registration';
+import LandingPage from '../../routes/LandingPage/LandingPage';
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
+import TasksPage from '../../routes/TasksPage/TasksPage';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicRoute from '../Utils/PublicRoute';
 
 class App extends Component {
   render() {
@@ -13,9 +16,13 @@ class App extends Component {
         </header>
         <main className='App_main'>
           <Switch>
-            <Route exact path={'/'} component={LandingPage}/>
 
-            <Route exact path={'/Register'} component={Registration}/>
+            <PublicRoute exact path={'/'} component={LandingPage}/>
+
+            <PublicRoute exact path={'/Register'} component={RegistrationPage}/>
+
+            <PrivateRoute path={'/Tasks'} component={TasksPage}/>
+
           </Switch>
         </main>
       </div>

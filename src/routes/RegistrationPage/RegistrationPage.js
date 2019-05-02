@@ -20,8 +20,7 @@ export default class Registration extends Component {
         first_name.value = ''
         user_name.value = ''
         password.value = ''
-        //TODO:
-        this.props.onRegistrationSuccess()
+        this.props.history.push('/') 
       })
       .catch(res => {
         this.setState({ error: res.error })
