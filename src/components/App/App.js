@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
@@ -8,6 +8,7 @@ import PrivateRoute from '../Utils/PrivateRoute';
 import PublicRoute from '../Utils/PublicRoute';
 
 class App extends Component {
+
   render() {
     return (
       <div className='App'>
@@ -16,13 +17,10 @@ class App extends Component {
         </header>
         <main className='App_main'>
           <Switch>
-
             <PublicRoute exact path={'/'} component={LandingPage}/>
-
             <PublicRoute exact path={'/Register'} component={RegistrationPage}/>
-
+            {/* <PrivateRoute path={'/Tasks'} component={TasksPage}/> */}
             <PrivateRoute path={'/Tasks'} component={TasksPage}/>
-
           </Switch>
         </main>
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
+import Context from '../../context/Context';
 
 export default class LandingPage extends Component {
 
@@ -12,6 +13,8 @@ export default class LandingPage extends Component {
   //     push: () => {}
   //   }
   // }
+
+  static contextType = Context;
 
   state = { error: null }
 
@@ -35,7 +38,10 @@ export default class LandingPage extends Component {
         user_name.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.authToken)
-        this.props.history.push('/Tasks')
+        //setting userId in context
+        this.context.setUserId(res.userId)
+        //TODO:sending userid in path, maybe bad idea
+        this.props.history.push(`/Tasks`)
       })
       .catch(res => {
         this.setState({error: res.error})
