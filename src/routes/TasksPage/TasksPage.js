@@ -7,7 +7,7 @@ import TokenService from '../../services/token-service';
 
 
 export default class TasksPage extends Component {
-  static contextType = Context
+  static contextType = Context;
 
   componentDidMount() {
     const userId = TokenService.getUserId()
@@ -15,12 +15,11 @@ export default class TasksPage extends Component {
     TaskApiService.getUserTasks(userId)
       .then(this.context.setUserTasks)
 
-    // TokenService.getUserId()
-    //   .then(TaskApiService.getUserTasks)
-    //     .then(this.context.setUserTasks)
+    TaskApiService.getUserSleep(userId)
+      .then(sleep => this.context.setUserSleep(sleep))
+
   }
 
-  static contextType = Context;
 
   render() {
     //console.log(this.context)

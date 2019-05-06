@@ -6,10 +6,10 @@ const Context = React.createContext({
 
   userId: null,
   userTasks: [],
-  userSatWake: 14,
-  userSatBed: 44,
-  userSunWake: 62,
-  userSunBed: 92,
+  sat_wake: 14,
+  sat_bed: 44,
+  sun_wake: 62,
+  sun_bed: 92,
   setUserId: () => {},
   setUserTasks: () => {},
   addUserTask: () => {},
@@ -24,10 +24,10 @@ export class ContextProvider extends Component {
 
     userId: null,
     userTasks: [],
-    userSatWake: 14,
-    userSatBed: 44,
-    userSunWake: 62,
-    userSunBed: 92
+    sat_wake: 14,
+    sat_bed: 44,
+    sun_wake: 62,
+    sun_bed: 92
   };
 
   setUserId = userId => {
@@ -50,18 +50,7 @@ export class ContextProvider extends Component {
     console.log(userSleep)
     this.setState(userSleep)
   }
-  // setUserSatWake = userSatWake => {
-  //   this.setState({userSatWake})
-  // }
-  // setUserSatBed = userSatBed => {
-  //   this.setState({userSatBed})
-  // }
-  // setUserSunWake = userSunWake => {
-  //   this.setState({userSunWake})
-  // }
-  // setUserSunBed = userSunBed => {
-  //   this.setState({userSunBed})
-  // }
+  
 
   setError = error => {
     console.error(error)
@@ -80,10 +69,10 @@ export class ContextProvider extends Component {
 
       userId: this.state.userId,
       userTasks: this.state.userTasks,
-      userSatWake: this.state.userSatWake,
-      userSatBed: this.state.userSatBed,
-      userSunWake: this.state.userSunWake,
-      userSunBed: this.state.userSunBed,
+      sat_wake: this.state.sat_wake,
+      sat_bed: this.state.sat_bed,
+      sun_wake: this.state.sun_wake,
+      sun_bed: this.state.sun_bed,
       setUserId: this.setUserId,
       setUserTasks: this.setUserTasks,
       addUserTask: this.addUserTask,

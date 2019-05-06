@@ -16,6 +16,19 @@ const TaskApiService = {
       )
   },
 
+  getUserSleep(userId) {
+    return fetch(`${config.API_ENDPOINT}/sleep/${userId}`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
+  },
+
 
   postTask(task_name, duration, priority, userId) {
     console.log({task_name, duration, priority, userId});
@@ -39,7 +52,7 @@ const TaskApiService = {
         )
   },
 
-  postSleep(userId, userSatWake, userSatBed, userSunWake, userSunBed) {
+  postSleep(userId, sat_wake, sat_bed, sun_wake, sun_bed) {
     return fetch(`${config.API_ENDPOINT}/sleep`, {
       method: 'POST',
       headers: {
@@ -48,10 +61,10 @@ const TaskApiService = {
       },
       body: JSON.stringify({
         id: userId,
-        userSatWake,
-        userSatBed,
-        userSunWake,
-        userSunBed
+        sat_wake,
+        sat_bed,
+        sun_wake,
+        sun_bed
       })
     })
       .then(res =>
