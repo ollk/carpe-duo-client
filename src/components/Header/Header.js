@@ -6,6 +6,7 @@ export default class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    TokenService.clearUserId()
     this.forceUpdate()
   }
 

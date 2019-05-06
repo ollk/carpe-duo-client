@@ -38,8 +38,10 @@ export default class LandingPage extends Component {
         user_name.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.authToken)
-        //setting userId in context
-        this.context.setUserId(res.userId)
+        //setting userId in sessionStorage
+        TokenService.saveUserId(res.userId)
+        //setting userId in context, removed to try session storage route
+        //this.context.setUserId(res.userId)
         //TODO:sending userid in path, maybe bad idea
         this.props.history.push(`/Tasks`)
       })

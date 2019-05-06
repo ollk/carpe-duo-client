@@ -6,17 +6,14 @@ const Context = React.createContext({
 
   userId: null,
   userTasks: [],
-  userSatWake: 8,
-  userSatBed: 20,
-  userSunWake: 8,
-  userSunBed: 20,
+  userSatWake: 14,
+  userSatBed: 44,
+  userSunWake: 62,
+  userSunBed: 92,
   setUserId: () => {},
   setUserTasks: () => {},
   addUserTask: () => {},
-  setUserSatWake: () => {},
-  setUserSatBed: () => {},
-  setUserSunWake: () => {},
-  setUserSunBed: () => {}
+  setUserSleep: () => {}
 })
 export default Context
 
@@ -27,10 +24,10 @@ export class ContextProvider extends Component {
 
     userId: null,
     userTasks: [],
-    userSatWake: 8,
-    userSatBed: 20,
-    userSunWake: 8,
-    userSunBed: 20
+    userSatWake: 14,
+    userSatBed: 44,
+    userSunWake: 62,
+    userSunBed: 92
   };
 
   setUserId = userId => {
@@ -42,29 +39,29 @@ export class ContextProvider extends Component {
   }
 
   addUserTask = userTask => {
+    console.log(userTask)
     this.setUserTasks([
       ...this.state.userTasks,
       userTask
     ])
   }
 
-  setUserSatWake = userSatWake => {
-    this.setState({ userSatWake })
+  setUserSleep = (userSleep) => {
+    console.log(userSleep)
+    this.setState(userSleep)
   }
-
-  setUserSatBed = userSatBed => {
-    this.setState({ userSatBed })
-  }
-
-  setUserSunWake = userSunWake => {
-    this.setState({ userSunWake })
-  }
-
-  setUserSunBed = userSunBed => {
-    this.setState({ userSunBed })
-  }
-
-
+  // setUserSatWake = userSatWake => {
+  //   this.setState({userSatWake})
+  // }
+  // setUserSatBed = userSatBed => {
+  //   this.setState({userSatBed})
+  // }
+  // setUserSunWake = userSunWake => {
+  //   this.setState({userSunWake})
+  // }
+  // setUserSunBed = userSunBed => {
+  //   this.setState({userSunBed})
+  // }
 
   setError = error => {
     console.error(error)
@@ -90,10 +87,7 @@ export class ContextProvider extends Component {
       setUserId: this.setUserId,
       setUserTasks: this.setUserTasks,
       addUserTask: this.addUserTask,
-      setUserSatWake: this.setUserSatWake,
-      setUserSatBed: this.setUserSatBed,
-      setUserSunWake: this.setUserSunWake,
-      setUserSunBed: this.setUserSunBed
+      setUserSleep: this.setUserSleep
     }
     return (
       <Context.Provider value={value}>

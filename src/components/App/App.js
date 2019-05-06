@@ -6,8 +6,21 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import TasksPage from '../../routes/TasksPage/TasksPage';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicRoute from '../Utils/PublicRoute';
+import TokenService from '../../services/token-service'
+import Context from '../../context/Context'
 
 class App extends Component {
+
+  static contextType = Context;
+
+  componentDidMount() {
+    if (TokenService.hasUserId()) {
+      const userId = TokenService.getUserId();
+      this.context.setUserId(userId);
+    }
+
+    
+  }
 
   render() {
     return (
