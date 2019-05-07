@@ -1,17 +1,46 @@
 import React, {Component} from 'react';
 import Context from '../../context/Context';
 import TaskApiService from '../../services/task-api-service';
+import TokenService from '../../services/token-service';
 
 export default class SleepForm extends Component {
+
+  static contextType = Context;
 
   state = { 
     error: null,
     formValid: true,
     
+    userId: null,
     sat_wake: 14,
     sat_bed: 44,
     sun_wake: 62,
     sun_bed: 92
+  }
+
+  componentDidMount() {
+
+    console.log('sleepForm cDM', this.context)
+   
+    const userId = TokenService.getUserId()
+
+    TaskApiService.getUserSleep(userId)
+      .then(sleep => {
+        document.getElementById('SleepForm_SatWake').value=sleep.sat_wake;
+        document.getElementById('SleepForm_SatBed').value=sleep.sat_bed;
+        document.getElementById('SleepForm_SunWake').value=sleep.sun_wake;
+        document.getElementById('SleepForm_SunBed').value=sleep.sun_bed;
+        this.setState({
+          userId,
+          sat_wake: sleep.sat_wake,
+          sat_bed: sleep.sat_bed,
+          sun_wake: sleep.sun_wake,
+          sun_bed: sleep.sun_bed
+        })
+        this.context.setUserSleep(sleep)
+
+      })
+
   }
   
   validateTimes() {
@@ -66,12 +95,10 @@ export default class SleepForm extends Component {
     document.getElementById('SleepForm_SunBed').value='92';
   }
 
-  static contextType = Context;
 
   handleSubmit = event => {
     event.preventDefault();
-    const {userId} = this.context;
-    const {sat_wake, sat_bed, sun_wake, sun_bed} = this.state;
+    const {userId, sat_wake, sat_bed, sun_wake, sun_bed} = this.state;
     
     TaskApiService.postSleep(userId, sat_wake, sat_bed, sun_wake, sun_bed)
     //TODO: will this work?  
@@ -97,7 +124,7 @@ export default class SleepForm extends Component {
           <label htmlFor='SleepForm_SatWake'>
             Saturday Wake Time
           </label>
-          <select required name='satWake' id='SleepForm_SatWake' defaultValue='14'
+          <select required name='satWake' id='SleepForm_SatWake'
           onChange={event => this.updateSatWake(event.target.value)}>
             <option value='6'>3:00AM</option>
             <option value='7'>3:30AM</option>
@@ -131,7 +158,7 @@ export default class SleepForm extends Component {
           <label htmlFor='SleepForm_SatBed'>
             Saturday Bed Time
           </label>
-          <select required name='satBed' id='SleepForm_SatBed' defaultValue='44'
+          <select required name='satBed' id='SleepForm_SatBed'
           onChange={event => this.updateSatBed(event.target.value)}>
             <option value='34'>5:00PM</option>
             <option value='35'>5:30PM</option>
@@ -165,7 +192,7 @@ export default class SleepForm extends Component {
           <label htmlFor='SleepForm_SunWake'>
             Sunday Wake Time
           </label>
-          <select required name='sunWake' id='SleepForm_SunWake' defaultValue='62'
+          <select required name='sunWake' id='SleepForm_SunWake'
           onChange={event => this.updateSunWake(event.target.value)}>
             <option value='54'>3:00AM</option>
             <option value='55'>3:30AM</option>
@@ -199,7 +226,7 @@ export default class SleepForm extends Component {
           <label htmlFor='SleepForm_SunBed'>
             Sunday Bed Time
           </label>
-          <select required name='sunBed' id='SleepForm_SunBed' defaultValue='92'
+          <select required name='sunBed' id='SleepForm_SunBed'
           onChange={event => this.updateSunBed(event.target.value)}>
             <option value='82'>5:00PM</option>
             <option value='83'>5:30PM</option>
