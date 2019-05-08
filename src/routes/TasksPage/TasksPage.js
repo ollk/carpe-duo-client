@@ -5,6 +5,8 @@ import SleepForm from '../../components/SleepForm/SleepForm';
 import TaskApiService from '../../services/task-api-service';
 import TokenService from '../../services/token-service';
 import Timeline from '../../components/Timeline/Timeline';
+import Tasks from '../../components/Tasks/Tasks';
+import './TasksPage.css';
 
 
 export default class TasksPage extends Component {
@@ -47,15 +49,32 @@ export default class TasksPage extends Component {
 
 
   render() {
-    // const satLength = this.context.sat_bed - this.context.sat_wake
-    // const sunLength = this.context.sun_bed - this.context.sun_wake
+   
 
     return (
       <>
         <SleepForm />
         <TasksForm />
-        <Timeline start={this.context.sat_wake} end={this.context.sat_bed}/>
-        <Timeline start={this.context.sun_wake} end={this.context.sun_bed}/>
+        <div className='schedule'>
+          <div className='timelines-div'>
+            <Timeline 
+              className='satTimeline'
+              day='Saturday' 
+              start={this.context.sat_wake} 
+              end={this.context.sat_bed}
+            />
+            <Timeline 
+              className='sunTimeline'
+              day='Sunday' 
+              start={this.context.sun_wake} 
+              end={this.context.sun_bed}
+            />
+          </div>
+          <div className='tasks-div'>
+            <Tasks />
+          </div>
+        </div>
+        
       </>
 
     )

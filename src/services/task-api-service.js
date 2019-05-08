@@ -52,6 +52,25 @@ const TaskApiService = {
         )
   },
 
+  updateTask(id, position, scheduled) {
+    return fetch(`${config.API_ENDPOINT}/tasks/${id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        position,
+        scheduled
+      })
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
+  },
+
   postSleep(userId, sat_wake, sat_bed, sun_wake, sun_bed) {
     return fetch(`${config.API_ENDPOINT}/sleep`, {
       method: 'POST',

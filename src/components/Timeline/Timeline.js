@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Timeline.css';
 
 export default class Timeline extends Component {
   
@@ -116,7 +117,7 @@ export default class Timeline extends Component {
     const timeBlocks = [];
     for(let i = start; i <= end; i ++) {
         timeBlocks.push(
-        <div key={i} className='timeBlock' > 
+        <div key={i} className='timeBlock' id={i}> 
         {this.numberSwitch(i)}
         </div>
         )
@@ -126,7 +127,10 @@ export default class Timeline extends Component {
 
   render() {
     return (
-      <>{this.renderTimeblocks()}</>
+      <>
+        <p className='schedule-header'>{this.props.day}</p>
+        <div className='dayTimeline'>{this.renderTimeblocks()}</div>
+      </>
     )
   }
 }

@@ -1,0 +1,14 @@
+.schedule {
+  width: 400px;
+  border: solid green 1px;
+  display: grid;
+  grid-template-columns: 200px 50px 150px;
+}
+
+.tasks-div {
+  grid-column: 3 / 4;
+}
+
+.schedule-header {
+  height: 30px;
+}

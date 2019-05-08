@@ -13,6 +13,8 @@ const Context = React.createContext({
   setUserId: () => {},
   setUserTasks: () => {},
   addUserTask: () => {},
+  deleteUserTask: () => {},
+  updateUserTask: () => {},
   setUserSleep: () => {}
 })
 export default Context
@@ -36,14 +38,27 @@ export class ContextProvider extends Component {
 
   setUserTasks = userTasks => {
     this.setState({ userTasks })
+    console.log(this.state.userTasks)
   }
 
   addUserTask = userTask => {
+    console.log(this.state.userTasks)
     console.log(userTask)
     this.setUserTasks([
       ...this.state.userTasks,
       userTask
     ])
+  }
+
+  deleteUserTask = userTask => {
+    this.setUserTasks(
+      this.state.userTasks.filter(task => task.id !== userTask.id)
+    )
+  }
+
+  updateUserTask = userTask => {
+    this.deleteUserTask(userTask)
+    this.addUserTask(userTask)
   }
 
   setUserSleep = (userSleep) => {
@@ -76,6 +91,8 @@ export class ContextProvider extends Component {
       setUserId: this.setUserId,
       setUserTasks: this.setUserTasks,
       addUserTask: this.addUserTask,
+      deleteUserTask: this.deleteUserTask,
+      updateUserTask: this.updateUserTask,
       setUserSleep: this.setUserSleep
     }
     return (

@@ -1,0 +1,11 @@
+.timeBlock {
+  height: 30px;
+  width: 200px;
+  border: black solid .5px;
+  margin: 0;
+}
+
+.dayTimeline {
+  width: 200px;
+  border: blue solid 1px;
+}

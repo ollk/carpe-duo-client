@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Context from '../../context/Context';
 import TaskApiService from '../../services/task-api-service';
+import TokenService from '../../services/token-service';
 
 export default class TasksForm extends Component {
 
@@ -39,7 +40,8 @@ export default class TasksForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const {userId} = this.context;
+    //const {userId} = this.context;
+    const userId = TokenService.getUserId()
     const {task_name, duration, priority} = this.state;
     
     TaskApiService.postTask(task_name, duration, priority, userId)
