@@ -50,14 +50,14 @@ export class ContextProvider extends Component {
     ])
   }
 
-  deleteUserTask = userTask => {
+  deleteUserTask = taskId => {
     this.setUserTasks(
-      this.state.userTasks.filter(task => task.id !== userTask.id)
+      this.state.userTasks.filter(task => task.id !== taskId)
     )
   }
 
   updateUserTask = userTask => {
-    this.deleteUserTask(userTask)
+    this.deleteUserTask(userTask.id)
     this.addUserTask(userTask)
   }
 

@@ -6,3 +6,28 @@
 p {
   margin: 0;
 }
+
+.delete-task {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+
+.high {
+  background-color: #CA2E55;
+  opacity: .9;
+}
+
+.medium {
+  background-color: #EAD94C;
+  opacity: .9;
+}
+
+.low {
+  background-color: #218380;
+  opacity: .9;
+}
+
+.handle   {
+  opacity: 1;
+}

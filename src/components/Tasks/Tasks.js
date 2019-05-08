@@ -9,6 +9,10 @@ export default class Tasks extends Component {
 
   static contextType = Context;
 
+  state = {
+    dragId: null
+  }
+
 
   componentDidMount() {
     const userId = TokenService.getUserId()
@@ -22,25 +26,28 @@ export default class Tasks extends Component {
     return this.context.userTasks.find(task => task.id === taskId)
   }
 
+  handleStart(event, dragElement) {
+    this.setState({dragId: Number(dragElement.node.attributes[1].nodeValue)})
+  }
+
   handleStop(event, dragElement) {
 
-    console.log(this.context)
-    console.log(event, dragElement)
-    console.log(dragElement.lastY)
-    console.log(Number(event.path[1].id))
-
-    const taskId = Number(event.path[1].id)
+    const taskId = this.state.dragId
     const task = this.getTaskById(taskId)
 
     if (dragElement.lastX < -100) {
       TaskApiService.updateTask(taskId, dragElement.lastY, true)
         .then(task => this.context.updateUserTask(task))
     } else if (task.scheduled) {
-      console.log('unschedule', task)
       TaskApiService.updateTask(taskId, 0, false)
         .then(task => this.context.updateUserTask(task))
     }
 
+  }
+
+  handleDelete(id) {
+    TaskApiService.deleteTask(id)
+      .then(taskId => this.context.deleteUserTask(taskId))
   }
 
   sortTasks(tasks) {
@@ -81,6 +88,7 @@ export default class Tasks extends Component {
     console.log(this.context)
     const res = this.sortTasks(tasks).map(task => 
       <Draggable
+        onStart={this.handleStart.bind(this)}
         onStop={this.handleStop.bind(this)}
         key={task.id}
         handle='.handle'
@@ -89,7 +97,7 @@ export default class Tasks extends Component {
         defaultPosition={this.positionTask(task)}
         >
         <div
-          className='task'
+          className={`task ${task.priority}`}
           id={task.id}
           style={{
             height: task.duration,
@@ -97,7 +105,11 @@ export default class Tasks extends Component {
           }}
         >
           <p className='handle'>{task.task_name}</p>
-
+          <button 
+          className='delete-task'
+          onClick={() => this.handleDelete(task.id)}>
+          X
+          </button>
         </div>
       </Draggable>
     )
