@@ -1,11 +1,32 @@
 .timeBlock {
   height: 30px;
   width: 200px;
-  border: black solid .5px;
+  /* border: black solid .5px; */
   margin: 0;
+  background-color: #bbb;
+  font-size: .80em;
+  padding: 2px;
+}
+
+.timeBlock:nth-child(even) {
+  background-color: #ddd;
+}
+
+.timeBlock:first-child {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.timeBlock:last-child {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .dayTimeline {
   width: 200px;
-  border: blue solid 1px;
+}
+
+.schedule-header {
+  font-size: 1.5em;
+  text-align: center;
 }

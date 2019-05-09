@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
+import './Header.css';
 
 export default class Header extends Component {
 
@@ -20,6 +21,16 @@ export default class Header extends Component {
     )
   }
 
+  renderLoginLink() {
+    return (
+      <div className='Header_login'>
+        <Link to='/Login'>
+          LogIn
+        </Link>
+      </div>
+    )
+  }
+  
 
   render() {
     return <>
@@ -30,7 +41,10 @@ export default class Header extends Component {
           </Link>
         </h1>
         <span className='Header_tagline'>Seize the Weekend</span>
-        {TokenService.hasAuthToken() && this.renderLogoutLink()}
+        {TokenService.hasAuthToken() 
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()
+        }
       </nav>
     </>
   }

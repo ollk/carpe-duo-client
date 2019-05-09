@@ -6,10 +6,13 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import TasksPage from '../../routes/TasksPage/TasksPage';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicRoute from '../Utils/PublicRoute';
+import LoginPage from '../../routes/LoginPage/LoginPage';
+
+import './App.css';
 
 class App extends Component {
 
- 
+
 
   render() {
     return (
@@ -21,7 +24,7 @@ class App extends Component {
           <Switch>
             <PublicRoute exact path={'/'} component={LandingPage}/>
             <PublicRoute exact path={'/Register'} component={RegistrationPage}/>
-            {/* <PrivateRoute path={'/Tasks'} component={TasksPage}/> */}
+            <PublicRoute exact path={'/Login'} component={LoginPage}/>
             <PrivateRoute path={'/Tasks'} component={TasksPage}/>
           </Switch>
         </main>

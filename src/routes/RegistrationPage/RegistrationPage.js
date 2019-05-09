@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
+import {Link} from 'react-router-dom';
 
 export default class Registration extends Component {
 
@@ -33,7 +34,9 @@ export default class Registration extends Component {
     const {error} = this.state
     return (
       <>
-        <h2>Create New Account</h2>
+        <h1>Sign Up</h1>
+        <p className='already'>Already have a Carpe Duo account?</p>
+        <Link to='/Login'>Log In</Link>
         <form className='RegistrationForm' onSubmit={this.handleSubmit}>
           <div role='alert'>
             {error && <p className='red'>{error}</p>}
@@ -73,7 +76,7 @@ export default class Registration extends Component {
           </div>
           <input
             type='submit'
-            value='Register'
+            value='Sign Up'
           />
         </form>
       </>

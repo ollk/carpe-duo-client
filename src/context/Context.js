@@ -37,32 +37,49 @@ export class ContextProvider extends Component {
   }
 
   setUserTasks = userTasks => {
+    console.log('setUserTasks')
+    console.log('set 1',this.state.userTasks)
     this.setState({ userTasks })
-    console.log(this.state.userTasks)
+    console.log('set 2',this.state.userTasks)
   }
 
   addUserTask = userTask => {
-    console.log(this.state.userTasks)
-    console.log(userTask)
     this.setUserTasks([
       ...this.state.userTasks,
       userTask
     ])
   }
 
+  // deleteUserTask = taskId => {
+  //   this.setUserTasks(
+  //     this.state.userTasks.filter(task => task.id !== taskId)
+  //   )
+  // }
+
   deleteUserTask = taskId => {
-    this.setUserTasks(
-      this.state.userTasks.filter(task => task.id !== taskId)
-    )
+    console.log('deleteUserTask')
+    const newTasks = this.state.userTasks.filter(task => task.id !== taskId)
+    this.setUserTasks(newTasks)
   }
 
+  // updateUserTask = userTask => {
+  //   console.log('1',this.state.userTasks)
+  //   this.deleteUserTask(userTask.id)
+  //   console.log('2',userTask)
+  //   this.addUserTask(userTask)
+  //   console.log('3',this.state.userTasks)
+  // }
+
   updateUserTask = userTask => {
-    this.deleteUserTask(userTask.id)
-    this.addUserTask(userTask)
+    console.log('updateUserTask', userTask)
+    console.log('update 1', this.state.userTasks)
+    const newTasks = this.state.userTasks.filter(task => task.id !== userTask.id)
+    console.log('update 2', newTasks)
+    this.setUserTasks([...newTasks, userTask])
+    console.log('update 3', this.state.userTasks)
   }
 
   setUserSleep = (userSleep) => {
-    console.log(userSleep)
     this.setState(userSleep)
   }
   

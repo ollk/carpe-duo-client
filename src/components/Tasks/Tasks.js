@@ -37,38 +37,42 @@ export default class Tasks extends Component {
 
     if (dragElement.lastX < -100) {
       TaskApiService.updateTask(taskId, dragElement.lastY, true)
-        .then(task => this.context.updateUserTask(task))
+        .then(task => this.context.updateUserTask(task[0]))
     } else if (task.scheduled) {
       TaskApiService.updateTask(taskId, 0, false)
-        .then(task => this.context.updateUserTask(task))
+        .then(task => this.context.updateUserTask(task[0]))
     }
 
   }
 
   handleDelete(id) {
     TaskApiService.deleteTask(id)
-      .then(taskId => this.context.deleteUserTask(taskId))
+      .then(taskId => {
+        this.context.deleteUserTask(taskId[0])
+      })
   }
-
-  sortTasks(tasks) {
-    const sortedTasks = [];
-    tasks.map(task => {
-      if (task.priority === 'high') {
-        sortedTasks.push(task)
-      }
-    })
-    tasks.map(task => {
-      if (task.priority === 'medium') {
-        sortedTasks.push(task)
-      }
-    })
-    tasks.map(task => {
-      if (task.priority === 'low') {
-        sortedTasks.push(task)
-      }
-    })
-    return sortedTasks;
-  }
+  //trying without sorting
+  //map this.sortTasks(tasks) to reintroduce
+  //
+  // sortTasks(tasks) {
+  //   const sortedTasks = [];
+  //   tasks.map(task => {
+  //     if (task.priority === 'high') {
+  //       sortedTasks.push(task)
+  //     }
+  //   })
+  //   tasks.map(task => {
+  //     if (task.priority === 'medium') {
+  //       sortedTasks.push(task)
+  //     }
+  //   })
+  //   tasks.map(task => {
+  //     if (task.priority === 'low') {
+  //       sortedTasks.push(task)
+  //     }
+  //   })
+  //   return sortedTasks;
+  // }
 
   offset = 0;
 
@@ -79,21 +83,21 @@ export default class Tasks extends Component {
       return pos 
     } 
     if (task.scheduled) {
-      return {x: -150, y: task.position};
+      return {x: -170, y: task.position};
     }
   }
   
   renderTasks() {
-    const tasks = this.context.userTasks;
+    //const tasks = this.context.userTasks;
     console.log(this.context)
-    const res = this.sortTasks(tasks).map(task => 
+    const res = this.context.userTasks.map(task => 
       <Draggable
         onStart={this.handleStart.bind(this)}
         onStop={this.handleStop.bind(this)}
         key={task.id}
         handle='.handle'
         bounds='.schedule'
-        grid={[150, 30]}
+        grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
         >
         <div

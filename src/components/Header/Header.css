@@ -1,0 +1,19 @@
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FDFFFC;
+  z-index: 10;
+}
+
+.Header h1 {
+  margin: 0;
+  margin-left: 10px;
+}
+
+.Header_logout, .Header_login {
+  position: absolute;
+  right: 40px;
+  top: 10px;
+}
