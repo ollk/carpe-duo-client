@@ -24,9 +24,6 @@ const TokenService = {
   },
   clearUserId() {
     window.sessionStorage.removeItem('userId');
-  },
-  hasUserId() {
-    return !!TokenService.getAuthToken();
   }
 
 }

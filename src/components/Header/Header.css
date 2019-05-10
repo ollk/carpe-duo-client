@@ -3,8 +3,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FDFFFC;
+  height: 70px;
+  background-color: #fdfffc;
   z-index: 10;
+
+  padding-left: 40px;
+  padding-top: 5px;
+
+  opacity: .95;
+
 }
 
 .Header h1 {
@@ -12,8 +19,17 @@
   margin-left: 10px;
 }
 
+.nav-link {
+  text-decoration: none;
+  color: #ca2e55;
+}
+
 .Header_logout, .Header_login {
   position: absolute;
   right: 40px;
-  top: 10px;
+  top: 17px;
+}
+
+.Header_tagline {
+  color: #218380;
 }

@@ -4,6 +4,8 @@ import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import Context from '../../context/Context';
 import './LoginPage.css';
+import TaskApiService from '../../services/task-api-service';
+import Header from '../../components/Header/Header';
 
 export default class LoginPage extends Component {
 
@@ -26,6 +28,17 @@ export default class LoginPage extends Component {
   //   history.push(destination)
   // }
 
+  handleLoginSuccess = userId => {
+    TaskApiService.getUserTasks(userId)
+      .then(res => {
+        if (res.length > 0) {
+          this.props.history.push('/Tasks')
+        } else {
+          this.props.history.push('/Sleep')
+        }
+      })
+  }
+
   handleSubmitJwtAuth = event => {
     event.preventDefault()
     this.setState({error: null})
@@ -41,10 +54,14 @@ export default class LoginPage extends Component {
         TokenService.saveAuthToken(res.authToken)
         //setting userId in sessionStorage
         TokenService.saveUserId(res.userId)
+        this.handleLoginSuccess(res.userId)
         //setting userId in context, removed to try session storage route
         //this.context.setUserId(res.userId)
         //TODO:sending userid in path, maybe bad idea
-        this.props.history.push(`/Tasks`)
+
+        //this.props.history.push(`/Sleep`)
+
+        // this.context.setUserName(res.userName)
       })
       .catch(res => {
         this.setState({error: res.error})
@@ -55,6 +72,8 @@ export default class LoginPage extends Component {
     const {error} = this.state
     return (
       <>
+        <Header />
+
         <h1>Log In</h1>
         <p className='new'>New to Carpe Duo?</p>
         <Link to='/Register'>Sign Up</Link>

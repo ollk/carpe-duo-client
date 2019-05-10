@@ -5,12 +5,14 @@ const Context = React.createContext({
   error: null,
 
   userId: null,
+  userName: null,
   userTasks: [],
   sat_wake: 14,
   sat_bed: 44,
   sun_wake: 62,
   sun_bed: 92,
   setUserId: () => {},
+  setUserName: () => {},
   setUserTasks: () => {},
   addUserTask: () => {},
   deleteUserTask: () => {},
@@ -25,6 +27,7 @@ export class ContextProvider extends Component {
     error: null,
 
     userId: null,
+    userName: null,
     userTasks: [],
     sat_wake: 14,
     sat_bed: 44,
@@ -34,6 +37,11 @@ export class ContextProvider extends Component {
 
   setUserId = userId => {
     this.setState({ userId })
+  }
+
+  setUserName = userName => {
+    this.setState({ userName })
+    console.log('setUserName', this.state)
   }
 
   setUserTasks = userTasks => {
@@ -100,6 +108,7 @@ export class ContextProvider extends Component {
       error: this.state.error,
 
       userId: this.state.userId,
+      userName: this.state.userName,
       userTasks: this.state.userTasks,
       sat_wake: this.state.sat_wake,
       sat_bed: this.state.sat_bed,

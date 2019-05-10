@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TasksForm from '../../components/TasksForm/TasksForm';
 import Context from '../../context/Context';
-import SleepForm from '../../components/SleepForm/SleepForm';
 import Timeline from '../../components/Timeline/Timeline';
 import Tasks from '../../components/Tasks/Tasks';
 import './TasksPage.css';
+import Header from '../../components/Header/Header';
 
 
 export default class TasksPage extends Component {
@@ -17,7 +18,10 @@ export default class TasksPage extends Component {
 
     return (
       <>
-        <SleepForm />
+        <Header />
+
+
+        <Link to='/Sleep'>Edit Bed/Wake times</Link>
         <TasksForm />
         <div className='schedule'>
           <div className='timelines-div'>

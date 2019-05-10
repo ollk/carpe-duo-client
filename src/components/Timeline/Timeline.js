@@ -107,7 +107,7 @@ export default class Timeline extends Component {
       case 104: return '4:00AM'
       case 105: return '4:30AM'
       case 106: return '5:00AM'
-      default: return 'error'
+      default: return ''
   }
 }
 

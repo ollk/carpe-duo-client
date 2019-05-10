@@ -57,6 +57,21 @@ const TaskApiService = {
         )
   },
 
+  resetUserTasks(userId) {
+    return fetch(`${config.API_ENDPOINT}/tasks/reset/${userId}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      }      
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
+  },
+
   deleteTask(id) {
     return fetch(`${config.API_ENDPOINT}/tasks/${id}`, {
       method: 'DELETE',

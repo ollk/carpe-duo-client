@@ -11,10 +11,11 @@ export default class Header extends Component {
     this.forceUpdate()
   }
 
+
   renderLogoutLink() {
     return (
       <div className='Header_logout'>
-        <Link onClick={this.handleLogoutClick} to='/'>
+        <Link onClick={this.handleLogoutClick} to='/' className='nav-link'>
           Logout
         </Link>
       </div>
@@ -24,7 +25,7 @@ export default class Header extends Component {
   renderLoginLink() {
     return (
       <div className='Header_login'>
-        <Link to='/Login'>
+        <Link to='/Login' className='nav-link'>
           LogIn
         </Link>
       </div>
@@ -36,7 +37,7 @@ export default class Header extends Component {
     return <>
       <nav className='Header'>
         <h1>
-          <Link to='/'>
+          <Link to='/' className='nav-link'>
             Carpe Duo
           </Link>
         </h1>

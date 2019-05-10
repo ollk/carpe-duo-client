@@ -82,32 +82,36 @@ export default class SleepForm extends Component {
   }
 
   //not sure if I'll use this
-  resetForm() {
-    this.setState({
-      sat_wake: 14,
-      sat_bed: 44,
-      sun_wake: 62,
-      sun_bed: 92
-    })
-    document.getElementById('SleepForm_SatWake').value='14';
-    document.getElementById('SleepForm_SatBed').value='44';
-    document.getElementById('SleepForm_SunWake').value='62';
-    document.getElementById('SleepForm_SunBed').value='92';
-  }
+  // resetForm() {
+  //   this.setState({
+  //     sat_wake: 14,
+  //     sat_bed: 44,
+  //     sun_wake: 62,
+  //     sun_bed: 92
+  //   })
+  //   document.getElementById('SleepForm_SatWake').value='14';
+  //   document.getElementById('SleepForm_SatBed').value='44';
+  //   document.getElementById('SleepForm_SunWake').value='62';
+  //   document.getElementById('SleepForm_SunBed').value='92';
+  // }
 
+  resetTasks() {
+    const {userId} = this.state
+    TaskApiService.resetUserTasks(userId)
+      .then(res => this.context.setUserTasks(res))
+      .catch(this.context.setError)
+  }
 
   handleSubmit = event => {
     event.preventDefault();
     const {userId, sat_wake, sat_bed, sun_wake, sun_bed} = this.state;
     
     TaskApiService.postSleep(userId, sat_wake, sat_bed, sun_wake, sun_bed)
-    //TODO: will this work?  
-      .then(res => this.context.setUserSleep(res[0]))
-      //.then(res => console.log(res[0]))
-      //dont think I want to resent the form here
-      // .then(() => {
-      //   this.resetForm();
-      // })
+      .then(res => {
+        this.context.setUserSleep(res[0])
+        //possible problem
+        this.resetTasks()
+      })
       .catch(this.context.setError)
   }
 

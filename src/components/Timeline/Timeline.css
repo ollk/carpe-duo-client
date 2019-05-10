@@ -1,7 +1,7 @@
 .timeBlock {
   height: 30px;
   width: 200px;
-  /* border: black solid .5px; */
+  /* border: gray solid .25px; */
   margin: 0;
   background-color: #bbb;
   font-size: .80em;
@@ -10,6 +10,7 @@
 
 .timeBlock:nth-child(even) {
   background-color: #ddd;
+  background-color: #ccc;
 }
 
 .timeBlock:first-child {

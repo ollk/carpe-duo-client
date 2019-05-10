@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import {Link} from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 export default class Registration extends Component {
 
@@ -21,7 +22,7 @@ export default class Registration extends Component {
         first_name.value = ''
         user_name.value = ''
         password.value = ''
-        this.props.history.push('/') 
+        this.props.history.push('/Login') 
       })
       .catch(res => {
         this.setState({ error: res.error })
@@ -34,6 +35,8 @@ export default class Registration extends Component {
     const {error} = this.state
     return (
       <>
+        <Header />
+
         <h1>Sign Up</h1>
         <p className='already'>Already have a Carpe Duo account?</p>
         <Link to='/Login'>Log In</Link>

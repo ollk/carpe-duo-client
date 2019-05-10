@@ -51,9 +51,9 @@ export default class Tasks extends Component {
         this.context.deleteUserTask(taskId[0])
       })
   }
-  //trying without sorting
-  //map this.sortTasks(tasks) to reintroduce
-  //
+  // trying without sorting
+  // map this.sortTasks(tasks) to reintroduce
+  
   // sortTasks(tasks) {
   //   const sortedTasks = [];
   //   tasks.map(task => {
