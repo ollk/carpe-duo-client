@@ -13,18 +13,20 @@ export default class LandingPage extends Component {
         <Header />
 
 
-        <header role='banner'>
+        <header role='banner' className='banner'>
           <h1>Carpe Duo</h1>
-          <p>Seize the Weekend!</p>
+          <p>Seize the Weekend</p>
         </header>
 
         <section className='welcome-message'>
           Welcome to Carpe Duo, an app designed to help you plan a productive weekend!
         </section>
 
-        <Link to='/register' className='get-started-button'>
-          Get Started
-        </Link>
+        <div className='get-started-button'>
+          <Link to='/register' className='get-started-link'>
+            Get Started
+          </Link>
+        </div>
       </>
     )
   }

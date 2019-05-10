@@ -1,0 +1,43 @@
+.banner {
+  text-align: center;
+}
+
+.banner h1 {
+  color: #ca2e55;
+  font-size: 4em;
+  margin: 0;
+  margin-top: 200px;
+}
+
+.banner p {
+  color: #235789;
+  font-size: 2.5em;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  font-weight: thin;
+  font-size: 1.25em;
+  /* color: #235789; */
+
+}
+
+.get-started-button {
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ead94c;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.get-started-link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ca2e55;
+}

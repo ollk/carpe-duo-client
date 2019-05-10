@@ -73,44 +73,44 @@ export default class LoginPage extends Component {
     return (
       <>
         <Header />
-
-        <h1>Log In</h1>
-        <p className='new'>New to Carpe Duo?</p>
-        <Link to='/Register'>Sign Up</Link>
-
-        <form className='LoginForm'
-          onSubmit={this.handleSubmitJwtAuth}
-        >
-          <div role='alert'>
-          {error && <p className='red'>{error}</p>}
-          </div>
-          <div className='user_name'>
-            <label htmlFor='LoginForm-user_name'>
-              User name
-            </label>
-            <input 
-              required 
-              type='text'
-              name='user_name' 
-              id='LoginForm-user_name'
-            />
-          </div>
-          <div className='password'>
-            <label htmlFor='LoginForm-password'>
-              Password
-            </label>
-            <input 
-              required 
-              type='text'
-              name='password' 
-              id='LoginForm-password'
-            />
-          </div>
-          <input
-            type='submit'
-            value='Log In'
-          />
-        </form>
+        <div className='login-box'>
+          <h1>Log In</h1>
+          <p className='new'>
+            New to Carpe Duo?
+            <Link to='/Register' className='registration-link'> Sign Up</Link>
+          </p>
+          
+          <form className='LoginForm'
+            onSubmit={this.handleSubmitJwtAuth}
+          >
+            <div role='alert'>
+            {error && <p className='red'>{error}</p>}
+            </div>
+            <div className='user_name'>
+              <label htmlFor='LoginForm-user_name'>
+                Username
+              </label>
+              <input 
+                required 
+                type='text'
+                name='user_name' 
+                id='LoginForm-user_name'
+              />
+            </div>
+            <div className='password'>
+              <label htmlFor='LoginForm-password'>
+                Password
+              </label>
+              <input 
+                required 
+                type='text'
+                name='password' 
+                id='LoginForm-password'
+              />
+            </div>
+            <button type='submit'>Log In</button>
+          </form>
+        </div>
 
 
       </>
