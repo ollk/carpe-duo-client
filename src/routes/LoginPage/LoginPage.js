@@ -34,7 +34,7 @@ export default class LoginPage extends Component {
         if (res.length > 0) {
           this.props.history.push('/Tasks')
         } else {
-          this.props.history.push('/Sleep')
+          this.props.history.push('/Tasks/Sleep')
         }
       })
   }

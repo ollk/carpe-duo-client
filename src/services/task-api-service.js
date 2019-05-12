@@ -17,7 +17,6 @@ const TaskApiService = {
   },
 
   postTask(task_name, duration, priority, userId) {
-    console.log({task_name, duration, priority, userId});
     return fetch(`${config.API_ENDPOINT}/tasks`, {
       method: 'POST',
       headers: {

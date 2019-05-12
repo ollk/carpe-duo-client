@@ -1,0 +1,79 @@
+.sleep-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fdfffc;
+  border-radius: 5px;
+  width: 400px;
+  height: 430px;
+  margin: auto;
+  margin-top: 150px;
+  text-align: center;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+
+  padding: 1em;
+  z-index: 10;
+}
+
+.sleep-box h1 {
+  color: #ca2e55;
+}
+
+.SleepForm {
+  margin-bottom: 15px;
+}
+
+.SleepForm div {
+  position: relative;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+.SleepForm div label {
+  text-align: left;
+  font-size: .9em;
+}
+
+.SleepForm div select {
+  height: 2em;
+  margin: auto;
+  margin-bottom: 1em;
+  position: absolute;
+  right: 5px;
+}
+
+.sleep-message {
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.sleep-submit, .abort-button {
+  width: 230px;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  margin-top: 1em;
+  /* padding: 4px; */
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ead94c;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #ca2e55;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.abort-button {
+  padding: 4px;
+}
+
+.SleepForm button:disabled {
+  background-color: gray;
+}
+
+.SleepForm button:hover {
+  cursor: pointer;
+}

@@ -10,7 +10,9 @@ export default class Tasks extends Component {
   static contextType = Context;
 
   state = {
-    dragId: null
+    dragId: null,
+    offset: 0
+    // userTasks: []
   }
 
 
@@ -19,14 +21,23 @@ export default class Tasks extends Component {
 
     TaskApiService.getUserTasks(userId)
       .then(tasks => this.context.setUserTasks(tasks))
-
   }
+
+  // componentDidMount() {
+  //   const userTasks = this.props.userTasks
+
+  //   console.log('Tasks.js userTasks', userTasks)
+  //   console.log('Tasks.js context tasks', this.context.userTasks)
+
+  //   this.setState({userTasks})
+  // }
 
   getTaskById(taskId) {
     return this.context.userTasks.find(task => task.id === taskId)
   }
 
   handleStart(event, dragElement) {
+    //getting Task id of dragged element
     this.setState({dragId: Number(dragElement.node.attributes[1].nodeValue)})
   }
 
@@ -34,6 +45,7 @@ export default class Tasks extends Component {
 
     const taskId = this.state.dragId
     const task = this.getTaskById(taskId)
+    console.log(task)
 
     if (dragElement.lastX < -100) {
       TaskApiService.updateTask(taskId, dragElement.lastY, true)
@@ -89,8 +101,8 @@ export default class Tasks extends Component {
   
   renderTasks() {
     //const tasks = this.context.userTasks;
-    console.log(this.context)
-    const res = this.context.userTasks.map(task => 
+    console.log('rendering tasks', this.context)
+    const tasks = this.context.userTasks.map(task => 
       <Draggable
         onStart={this.handleStart.bind(this)}
         onStop={this.handleStop.bind(this)}
@@ -118,7 +130,7 @@ export default class Tasks extends Component {
       </Draggable>
     )
     this.offset = 0;
-    return res;
+    return tasks;
   }
 
   render() {
