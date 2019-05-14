@@ -52,10 +52,10 @@ export default class TasksPage extends Component {
         <Header />
 
         <Route path='/Tasks/Sleep' component={SleepForm}/>
-        <Route path='/Tasks/Tasks' component={TasksForm}/>
+        <Route path='/Tasks/New' component={TasksForm}/>
         <div className='sleep-link-div'>
           <Link to='/Tasks/Sleep' className='sleep-link'>Change Waking Hours</Link>
-          <Link to='/Tasks/Tasks' className='tasks-link'>Create New Task</Link>
+          <Link to='/Tasks/New' className='tasks-link'>Create New Task</Link>
         </div>
         {/* <TasksForm /> */}
         <div className='schedule'>

@@ -111,6 +111,7 @@ export default class Tasks extends Component {
         bounds='.schedule'
         grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
+        //position={this.positionTask(task)}
         >
         <div
           className={`task ${task.priority}`}

@@ -6,34 +6,39 @@ import TasksPage from '../../routes/TasksPage/TasksPage';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicRoute from '../Utils/PublicRoute';
 import LoginPage from '../../routes/LoginPage/LoginPage';
-// import SleepPage from '../../routes/SleepPage/SleepPage';
-import TaskApiService from '../../services/task-api-service';
 import TokenService from '../../services/token-service';
-import Context from '../../context/Context';
+import AuthApiService from '../../services/auth-api-service';
+import IdleService from '../../services/idle-service';
 
 import './App.css';
 
 
 class App extends Component {
 
-  static contextType = Context;
 
   componentDidMount() {
-    // console.log('app.js start', this.context)
-    // const userId = TokenService.getUserId()
-    // this.context.setUserId(userId)
-    // Promise.all([
-    //   TaskApiService.getUserTasks(userId),
-    //   TaskApiService.getUserSleep(userId)
-    // ])
-    //   .then(([taskRes, sleepRes]) => {
-    //     this.context.setUserTasks(taskRes)
-    //     this.context.setUserSleep(sleepRes)
-    //     console.log('app.js end', this.context)
-    //   })
-    
+    IdleService.setIdleCallback(this.logoutFromIdle)
+
+    if (TokenService.hasAuthToken()) {
+      IdleService.registerIdleTimerResets()
+      TokenService.queueCallbackBeforeExpiry(() => {
+        AuthApiService.postRefreshToken()
+      })
+    }
   }
 
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets()
+    TokenService.clearCallbackBeforeExpiry()
+  }
+
+  logoutFromIdle = () => {
+    TokenService.clearAuthToken()
+    TokenService.clearCallbackBeforeExpiry()
+    IdleService.unRegisterIdleResets()
+
+    this.forceUpdate()
+  }
 
 
   render() {
@@ -44,7 +49,6 @@ class App extends Component {
             <PublicRoute exact path={'/'} component={LandingPage}/>
             <PublicRoute exact path={'/Register'} component={RegistrationPage}/>
             <PublicRoute exact path={'/Login'} component={LoginPage}/>
-            {/* <PrivateRoute path={'/Sleep'} component={SleepPage}/> */}
             <PrivateRoute path={'/Tasks'} component={TasksPage}/>
           </Switch>
         </main>

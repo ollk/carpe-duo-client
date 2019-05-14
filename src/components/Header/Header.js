@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import './Header.css';
+import IdleService from '../../services/idle-service';
 
 export default class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
     TokenService.clearUserId()
+    TokenService.clearCallbackBeforeExpiry()
+    IdleService.unRegisterIdleResets()
+    
+    //necessary?
     this.forceUpdate()
   }
 

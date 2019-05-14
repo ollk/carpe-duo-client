@@ -79,14 +79,14 @@ export default class TasksForm extends Component {
             </label>
             <select required name='duration' id='TasksForm_duration' defaultValue='20'
             onChange={event => this.updateDuration(event.target.value)}>
-              <option value='30'>30 minutes</option>
-              <option value='60'>1 hour</option>
-              <option value='90'>1 hour 30 minutes</option>
-              <option value='120'>2 hours</option>
-              <option value='150'>2 hours 30 minutes</option>
-              <option value='180'>3 hours</option>
-              <option value='210'>3 hours 30 minutes</option>
-              <option value='240'>4 hours</option>
+              <option value='30'>0:30</option>
+              <option value='60'>1:00</option>
+              <option value='90'>1:30</option>
+              <option value='120'>2:00</option>
+              <option value='150'>2:30</option>
+              <option value='180'>3:00</option>
+              <option value='210'>3:30</option>
+              <option value='240'>4:00</option>
             </select>
           </div>
 

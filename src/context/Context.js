@@ -46,7 +46,7 @@ export class ContextProvider extends Component {
   }
 
   setUserTasks = userTasks => {
-    this.setState({ userTasks })
+    this.setState({ userTasks }, () => console.log(this.state.userTasks))
     console.log('setUserTasks', this.state)
   }
 

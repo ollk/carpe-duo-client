@@ -54,11 +54,6 @@
 }
 
 
-.TasksForm div {
-  width: 65%;
-  margin: auto;
-  margin-bottom: .5em
-}
 
 .TasksForm div label {
   display: inline;
@@ -68,18 +63,32 @@
   margin-right: 100%;
 }
 
-.TasksForm div input {
+/* .TasksForm div input {
   display: block;
   width: 100%;
   height: 2em;
   margin: auto;
   margin-bottom: 1em;
+} */
+
+.TasksForm div input {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-.duration-div, .priority-div {
+/* .duration-div, .priority-div {
   position: relative;
   width: 60%;
   margin: auto;
+  text-align: left;
+} */
+
+.TasksForm div {
+  position: relative;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1em;
   text-align: left;
 }
 

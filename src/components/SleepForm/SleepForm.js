@@ -92,20 +92,6 @@ export default class SleepForm extends Component {
     () => {this.validateTimes()})
   }
 
-  //not sure if I'll use this
-  // resetForm() {
-  //   this.setState({
-  //     sat_wake: 14,
-  //     sat_bed: 44,
-  //     sun_wake: 62,
-  //     sun_bed: 92
-  //   })
-  //   document.getElementById('SleepForm_SatWake').value='14';
-  //   document.getElementById('SleepForm_SatBed').value='44';
-  //   document.getElementById('SleepForm_SunWake').value='62';
-  //   document.getElementById('SleepForm_SunBed').value='92';
-  // }
-
 
  
 
@@ -133,9 +119,13 @@ export default class SleepForm extends Component {
       })
       .then(() => {
         console.log('push')
-        this.props.history.push('/Tasks')
+        this.props.history.push(this.chooseLinkPath()) 
     })
       .catch(this.context.setError)
+  }
+
+  chooseLinkPath(){
+    return this.state.hasTasks ? '/Tasks' : '/Tasks/New'
   }
 
   renderSleepMessage(hasTasks) {
@@ -309,7 +299,7 @@ export default class SleepForm extends Component {
           </Link>
            */}
         </form>
-        <Link to='/Tasks' className='abort-button'>
+        <Link to={this.chooseLinkPath()} className='abort-button'>
           {this.renderButtonMessage(this.state.hasTasks)}
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import TokenService from '../../services/token-service';
+//import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import Context from '../../context/Context';
 import './LoginPage.css';
@@ -9,24 +9,16 @@ import Header from '../../components/Header/Header';
 
 export default class LoginPage extends Component {
 
-  //RELATED TO handleLoginSuccess
-  // static defaultProps = {
-  //   location: {},
-  //   history: {
-  //     push: () => {}
-  //   }
-  // }
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {}
+    }
+  }
 
   static contextType = Context;
 
   state = { error: null }
-
-  //NOT SURE IF THIS WILL BE NECCESSARY
-  // handleLoginSuccess = () => {
-  //   const { location, history } = this.props
-  //   const destination = (location.state || {}).from || '/'
-  //   history.push(destination)
-  // }
 
   handleLoginSuccess = userId => {
     TaskApiService.getUserTasks(userId)
@@ -51,17 +43,9 @@ export default class LoginPage extends Component {
       .then(res => {
         user_name.value = ''
         password.value = ''
-        TokenService.saveAuthToken(res.authToken)
-        //setting userId in sessionStorage
-        TokenService.saveUserId(res.userId)
+        //TokenService.saveAuthToken(res.authToken)
+        //TokenService.saveUserId(res.userId)
         this.handleLoginSuccess(res.userId)
-        //setting userId in context, removed to try session storage route
-        //this.context.setUserId(res.userId)
-        //TODO:sending userid in path, maybe bad idea
-
-        //this.props.history.push(`/Sleep`)
-
-        // this.context.setUserName(res.userName)
       })
       .catch(res => {
         this.setState({error: res.error})
