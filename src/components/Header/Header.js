@@ -11,15 +11,21 @@ export default class Header extends Component {
     TokenService.clearUserId()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()
-    
+
     //necessary?
     this.forceUpdate()
   }
 
 
-  renderLogoutLink() {
+  renderNavLinks() {
     return (
-      <div className='Header_logout'>
+      <div className='Header_nav_links'>
+        <Link to='/Tasks/New' className='nav-link'>
+          Create New Task
+        </Link>
+        <Link to='/Tasks/Sleep' className='nav-link mid'>
+          Change Waking Hours
+        </Link>
         <Link onClick={this.handleLogoutClick} to='/' className='nav-link'>
           Logout
         </Link>
@@ -41,14 +47,16 @@ export default class Header extends Component {
   render() {
     return <>
       <nav className='Header'>
-        <h1>
-          <Link to='/' className='nav-link'>
-            Carpe Duo
-          </Link>
-        </h1>
-        <span className='Header_tagline'>Seize the Weekend</span>
+        <div className='head-tag-div'>
+          <h1>
+            <Link to='/' className='Home-link'>
+              Carpe Duo
+            </Link>
+          </h1>
+        <p className='Header_tagline'>Seize the Weekend</p>
+        </div>
         {TokenService.hasAuthToken() 
-          ? this.renderLogoutLink()
+          ? this.renderNavLinks()
           : this.renderLoginLink()
         }
       </nav>

@@ -98,6 +98,17 @@ export default class Tasks extends Component {
       return {x: -170, y: task.position};
     }
   }
+
+  // positionTask(task) {
+  //   if (!task.scheduled) {
+  //     const pos = {Position:{x: 0, y: this.offset}};
+  //     this.offset = this.offset + task.duration;
+  //     return pos 
+  //   } 
+  //   if (task.scheduled) {
+  //     return {defaultPosition:{x: -170, y: task.position}};
+  //   }
+  // }
   
   renderTasks() {
     //const tasks = this.context.userTasks;
@@ -106,12 +117,13 @@ export default class Tasks extends Component {
       <Draggable
         onStart={this.handleStart.bind(this)}
         onStop={this.handleStop.bind(this)}
-        key={task.id}
+        key={task.id+1}
         handle='.handle'
         bounds='.schedule'
         grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
         //position={this.positionTask(task)}
+        //{...this.positionTask(task)}
         >
         <div
           className={`task ${task.priority}`}

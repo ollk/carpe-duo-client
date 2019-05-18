@@ -1,13 +1,12 @@
 .schedule {
   width: 400px;
-  /* border: solid green 1px; */
   display: grid;
   grid-template-columns: 200px 50px 150px;
   position: relative;
   margin: auto;
 }
 
-.tasks-div {
+.tasks-div {  
   grid-column: 3 / 4;
 }
 
