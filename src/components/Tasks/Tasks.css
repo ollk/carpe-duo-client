@@ -52,4 +52,5 @@ p {
   cursor: grabbing;
   padding: 2px;
   padding-left: 5px;
+  touch-action: none;
 }
