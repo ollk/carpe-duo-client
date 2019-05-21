@@ -36,6 +36,10 @@ export default class Tasks extends Component {
     return this.context.userTasks.find(task => task.id === taskId)
   }
 
+  handleDrag(event) {
+    event.preventDefault();
+  }
+
   handleStart(event, dragElement) {
     //getting Task id of dragged element
     this.setState({dragId: Number(dragElement.node.attributes[1].nodeValue)})
@@ -122,8 +126,8 @@ export default class Tasks extends Component {
         bounds='.schedule'
         grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
-        //position={this.positionTask(task)}
-        //{...this.positionTask(task)}
+
+        onDrag={this.handleDrag().bind(this)}
         >
         <div
           className={`task ${task.priority}`}
