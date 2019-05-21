@@ -4,6 +4,7 @@
   grid-template-columns: 200px 50px 150px;
   position: relative;
   margin: auto;
+  touch-action: none;
 }
 
 .tasks-div {  
