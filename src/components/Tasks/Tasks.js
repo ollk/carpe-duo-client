@@ -38,6 +38,7 @@ export default class Tasks extends Component {
 
   handleStart(event, dragElement) {
     //getting Task id of dragged element
+    event.preventDefault();
     this.setState({dragId: Number(dragElement.node.attributes[1].nodeValue)})
   }
 
