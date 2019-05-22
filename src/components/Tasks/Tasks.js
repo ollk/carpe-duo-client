@@ -127,6 +127,8 @@ export default class Tasks extends Component {
         bounds='.schedule'
         grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
+
+        onDrag={this.handleDrag.bind(this)}
         >
         <div
           className={`task ${task.priority}`}
