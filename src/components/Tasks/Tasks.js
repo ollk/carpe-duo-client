@@ -135,7 +135,7 @@ export default class Tasks extends Component {
             position: 'absolute'
           }}
         >
-          <p className='handle' onTouchMove={this.handleDrag().bind(this)}>{task.task_name}</p>
+          <p className='handle' onTouchMove={this.handleDrag.bind(this)}>{task.task_name}</p>
           <button 
           className='delete-task'
           onClick={() => this.handleDelete(task.id)}>
