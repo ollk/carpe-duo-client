@@ -127,8 +127,6 @@ export default class Tasks extends Component {
         bounds='.schedule'
         grid={[170, 30]}
         defaultPosition={this.positionTask(task)}
-
-        onTouchMove={this.handleDrag.bind(this)}
         >
         <div
           className={`task ${task.priority}`}
@@ -137,6 +135,7 @@ export default class Tasks extends Component {
             height: task.duration,
             position: 'absolute'
           }}
+          onTouchMove={this.handleDrag.bind(this)}
         >
           <p className='handle' >{task.task_name}</p>
           <button 
