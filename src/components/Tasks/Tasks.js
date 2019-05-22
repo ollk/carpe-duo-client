@@ -36,8 +36,8 @@ export default class Tasks extends Component {
     return this.context.userTasks.find(task => task.id === taskId)
   }
 
-  handleDrag(event) {
-    event.preventDefault();
+  handleDrag(e) {
+    e.preventDefault();
   }
 
   handleStart(event, dragElement) {
@@ -135,7 +135,7 @@ export default class Tasks extends Component {
             position: 'absolute'
           }}
         >
-          <p className='handle' onTouchMove={this.handleDrag(event)}>{task.task_name}</p>
+          <p className='handle' onTouchMove={this.handleDrag().bind(this)}>{task.task_name}</p>
           <button 
           className='delete-task'
           onClick={() => this.handleDelete(task.id)}>
