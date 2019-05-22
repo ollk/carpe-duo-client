@@ -11,8 +11,11 @@ export default class Tasks extends Component {
 
   state = {
     dragId: null,
-    offset: 0
+    offset: 0,
     // userTasks: []
+
+    //prevent scroll attempt
+    panning: false
   }
 
 
@@ -21,7 +24,27 @@ export default class Tasks extends Component {
 
     TaskApiService.getUserTasks(userId)
       .then(tasks => this.context.setUserTasks(tasks))
+
+    //prevent scroll attempt
+
+    window.document.body.addEventListener('touchmove', this.handlePreventTouchmoveWhenPanning, {
+      passive: false
+    });
+
   }
+  //prevent scroll attempt
+  componentWillUnmount () {
+    window.document.body.removeEventListener('touchmove', this.handlePreventTouchmoveWhenPanning, {
+      passive: false
+    });
+  }
+  //prevent scroll attempt
+  handlePreventTouchmoveWhenPanning = (event) => {
+    console.log('dragging')
+    if (this.state.panning) {
+      event.preventDefault();
+    }
+  };
 
   // componentDidMount() {
   //   const userTasks = this.props.userTasks
@@ -36,17 +59,20 @@ export default class Tasks extends Component {
     return this.context.userTasks.find(task => task.id === taskId)
   }
 
-  handleDrag(e) {
-    e.preventDefault();
-    console.log('dragging');
-  }
-
   handleStart(event, dragElement) {
     //getting Task id of dragged element
-    this.setState({dragId: Number(dragElement.node.attributes[1].nodeValue)})
+    //prevent scroll attempt
+    this.setState({
+      dragId: Number(dragElement.node.attributes[1].nodeValue),
+      dragging: true
+    })
+
   }
 
   handleStop(event, dragElement) {
+
+    //prevent scroll attempt
+    this.setState({dragging: false})
 
     const taskId = this.state.dragId
     const task = this.getTaskById(taskId)
@@ -114,6 +140,15 @@ export default class Tasks extends Component {
   //     return {defaultPosition:{x: -170, y: task.position}};
   //   }
   // }
+
+
+  //prevent scroll attempts
+  //
+  // onDrag={this.handleDrag.bind(this)}
+  // handleDrag(e) {
+  //   e.preventDefault();
+  //   console.log('dragging');
+  // }
   
   renderTasks() {
     //const tasks = this.context.userTasks;
@@ -135,7 +170,6 @@ export default class Tasks extends Component {
             height: task.duration,
             position: 'absolute'
           }}
-          onTouchMove={this.handleDrag.bind(this)}
         >
           <p className='handle' >{task.task_name}</p>
           <button 
