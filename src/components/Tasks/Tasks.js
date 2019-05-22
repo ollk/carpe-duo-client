@@ -38,6 +38,7 @@ export default class Tasks extends Component {
 
   handleDrag(e) {
     e.preventDefault();
+    console.log('dragging');
   }
 
   handleStart(event, dragElement) {
