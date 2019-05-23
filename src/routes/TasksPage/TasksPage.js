@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import TasksForm from '../../components/TasksForm/TasksForm';
 import Context from '../../context/Context';
 import Timeline from '../../components/Timeline/Timeline';
@@ -17,6 +17,7 @@ export default class TasksPage extends Component {
 
 
   componentDidMount() {
+
     console.log('rendering TasksPage', this.context)
     console.log('app.js start', this.context)
     const userId = TokenService.getUserId()

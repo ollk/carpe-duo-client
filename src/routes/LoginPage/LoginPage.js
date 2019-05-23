@@ -52,6 +52,12 @@ export default class LoginPage extends Component {
       })
   }
 
+  //prevent scroll attempt
+  // handleDrag(e) {
+  //   e.preventDefault();
+  //   alert('dragging');
+  // }
+
   render() {
     const {error} = this.state
     return (
@@ -66,6 +72,8 @@ export default class LoginPage extends Component {
           
           <form className='LoginForm'
             onSubmit={this.handleSubmitJwtAuth}
+            //prevent scroll attempt
+            // onTouchStart={this.handleDrag}
           >
             <div role='alert'>
             {error && <p className='red'>{error}</p>}
