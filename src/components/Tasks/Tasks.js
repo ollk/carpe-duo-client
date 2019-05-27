@@ -40,7 +40,6 @@ export default class Tasks extends Component {
 
     const taskId = this.state.dragId
     const task = this.getTaskById(taskId)
-    console.log(task)
 
     if (dragElement.lastX < -100) {
       TaskApiService.updateTask(taskId, dragElement.lastY, true)
@@ -83,14 +82,13 @@ export default class Tasks extends Component {
     }
   }
 
-
+  //prevent scroll attempt
   handleDrag(e) {
     e.preventDefault();
     console.log('dragging');
   }
   
   renderTasks() {
-    console.log('rendering tasks', this.context)
     const tasks = this.context.userTasks.map(task => 
       <Draggable
         onStart={this.handleStart.bind(this)}

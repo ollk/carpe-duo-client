@@ -37,17 +37,14 @@ export class ContextProvider extends Component {
 
   setUserId = userId => {
     this.setState({ userId })
-    console.log('setUserId', this.state)
   }
 
   setUserName = userName => {
     this.setState({ userName })
-    console.log('setUserName', this.state)
   }
 
   setUserTasks = userTasks => {
-    this.setState({ userTasks }, () => console.log(this.state.userTasks))
-    console.log('setUserTasks', this.state)
+    this.setState({ userTasks })
   }
 
   addUserTask = userTask => {
@@ -65,12 +62,10 @@ export class ContextProvider extends Component {
   updateUserTask = userTask => {
     const newTasks = this.state.userTasks.filter(task => task.id !== userTask.id)
     this.setUserTasks([...newTasks, userTask])
-    console.log('updateUserTask', this.state)
   }
 
   setUserSleep = (userSleep) => {
     this.setState(userSleep)
-    console.log('setUserSleep', this.state)
   }
   
 

@@ -18,8 +18,6 @@ export default class TasksPage extends Component {
 
   componentDidMount() {
 
-    console.log('rendering TasksPage', this.context)
-    console.log('app.js start', this.context)
     const userId = TokenService.getUserId()
     this.context.setUserId(userId)
     Promise.all([
@@ -29,7 +27,6 @@ export default class TasksPage extends Component {
       .then(([taskRes, sleepRes]) => {
         this.context.setUserTasks(taskRes)
         this.context.setUserSleep(sleepRes)
-        console.log('app.js end', this.context)
       })
     
   }

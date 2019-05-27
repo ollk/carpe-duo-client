@@ -97,13 +97,11 @@ export default class SleepForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('handleSubmit start')
     const {userId, sat_wake, sat_bed, sun_wake, sun_bed} = this.state;
     
     TaskApiService.postSleep(userId, sat_wake, sat_bed, sun_wake, sun_bed)
       .then(res => {
         this.context.setUserSleep(res[0])
-        console.log('set sleep, abt to call reset')
         this.resetTasks()
       })
       .catch(this.context.setError)
@@ -111,14 +109,11 @@ export default class SleepForm extends Component {
 
   resetTasks() {
     const {userId} = this.state
-    console.log('resetTasks start')
     TaskApiService.resetUserTasks(userId)
       .then(res => {
         this.context.setUserTasks(res)
-        console.log('set tasks, abt to push')
       })
       .then(() => {
-        console.log('push')
         this.props.history.push(this.chooseLinkPath()) 
         //need to reload page to reset draggable library built-in state
         window.location.reload()
@@ -295,11 +290,7 @@ export default class SleepForm extends Component {
           <button className='sleep-submit' type='submit' disabled={!this.state.formValid}>
             Set Wake/Bed Times
           </button>
-
-          {/* <Link className='sleep-submit' to='/Tasks' onClick={this.handleSubmit}>
-            Set Wake/Bed Times
-          </Link>
-           */}
+          
         </form>
         <Link to={this.chooseLinkPath()} className='abort-button'>
           {this.renderButtonMessage(this.state.hasTasks)}
