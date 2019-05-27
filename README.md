@@ -25,3 +25,12 @@ When a Task is created, the user selects a Task name, duration (between thirty m
 
 ![Scheduling Tasks](https://i.imgur.com/AWc24sN.png)
 Users schedule Tasks by dragging and dropping them onto the Timeline.  Task positions on the Timeline are saved with every move, so no need to worry about losing your schedule!
+
+### Tech
+  **Front-end:** CSS3 and JavaScript ES6 with React  
+  **Back-end:** [Express server](https://github.com/ollk/carpe-duo-server) with PostgresSQL database
+
+### Upcoming Changes
+* Improved mobile compatibility 
+* EVENTS: pre-scheduled plans and obligations that cannot be moved like Tasks
+* Ability to export finished schedule to calendar
