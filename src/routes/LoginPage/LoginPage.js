@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import Context from '../../context/Context';
 import './LoginPage.css';
@@ -43,20 +42,12 @@ export default class LoginPage extends Component {
       .then(res => {
         user_name.value = ''
         password.value = ''
-        //TokenService.saveAuthToken(res.authToken)
-        //TokenService.saveUserId(res.userId)
         this.handleLoginSuccess(res.userId)
       })
       .catch(res => {
         this.setState({error: res.error})
       })
   }
-
-  //prevent scroll attempt
-  // handleDrag(e) {
-  //   e.preventDefault();
-  //   alert('dragging');
-  // }
 
   render() {
     const {error} = this.state
@@ -72,8 +63,6 @@ export default class LoginPage extends Component {
           
           <form className='LoginForm'
             onSubmit={this.handleSubmitJwtAuth}
-            //prevent scroll attempt
-            // onTouchStart={this.handleDrag}
           >
             <div role='alert'>
             {error && <p className='red'>{error}</p>}

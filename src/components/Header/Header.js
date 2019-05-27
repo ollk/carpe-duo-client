@@ -11,9 +11,6 @@ export default class Header extends Component {
     TokenService.clearUserId()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()
-
-    //necessary?
-    this.forceUpdate()
   }
 
 

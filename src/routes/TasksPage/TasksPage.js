@@ -35,17 +35,6 @@ export default class TasksPage extends Component {
   }
 
 
-  // componentDidMount() {
-  //   const userId = TokenService.getUserId()
-  //   TaskApiService.getUserSleep(userId)
-  //     .then(sleep => {
-  //       this.context.setUserSleep(sleep)
-  //     })
-  // }
-
-
-
-  
   render() {
    
 
@@ -55,10 +44,6 @@ export default class TasksPage extends Component {
 
         <Route path='/Tasks/Sleep' component={SleepForm}/>
         <Route path='/Tasks/New' component={TasksForm}/>
-        {/* <div className='sleep-link-div'>
-          <Link to='/Tasks/Sleep' className='sleep-link'>Change Waking Hours</Link>
-          <Link to='/Tasks/New' className='tasks-link'>Create New Task</Link>
-        </div> */}
         <div className='schedule'>
           <div className='timelines-div'>
             <Timeline 

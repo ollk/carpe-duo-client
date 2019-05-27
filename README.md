@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Carpe Duo
 
-## Available Scripts
+[Link to live app](https://carpeduo.scottcolemanwilliams.now.sh/)
 
-In the project directory, you can run:
+### Overview
+Carpe Duo is a React app built to help users organize and schedule a productive weekend.  Designed to supplement a conventional calendar app, Carpe Duo allows the user to first create a list of weekend tasks, then drag and drop these tasks into and around a weekend timeline to create a weekend schedule.  It's a dynamic to-do list and scheduling tool.
 
-### `npm start`
+### Inspiration
+Every weekend I go through the same routine. I scratch out a to-do list on a scrap of paper and try to mentally map out a rough plan of when I'll complete each item.  Too often, I end up missing the mark, over or underestimating how long it will all take, and scrambling on Sunday night to finish everything.  I created Carpe Duo to improve that weekend planning process.  I wanted a tool that would let me create AND schedule my to-do list, helping me to plan out a realistic set of weekend goals including time for rest and relaxation.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Landing Page](https://i.imgur.com/G2gy73K.png)
+Landing Page
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+![Sign Up Page](https://i.imgur.com/PjTICMM.png)
+New users can create an account.
 
-### `npm test`
+![Log In Page](https://i.imgur.com/j4dR5bo.png)
+Returning users can log in.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Waking Hours](https://i.imgur.com/Jxi09KD.png)
+Users first set their Waking Hours for the weekend, setting the bounds of their Saturday and Sunday Timelines.  Waking Hours can be changed at any time.
 
-### `npm run build`
+![Creating Tasks](https://i.imgur.com/xNmYE9q.png)
+When a Task is created, the user selects a Task name, duration (between thirty minutes and four hours), and priority (low, medium, or high).  When first created, Tasks are unscheduled.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Scheduling Tasks](https://i.imgur.com/AWc24sN.png)
+Users schedule Tasks by dragging and dropping them onto the Timeline.  Task positions on the Timeline are saved with every move, so no need to worry about losing your schedule!
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Tech
+  **Front-end:** CSS3 and JavaScript ES6 with React  
+  **Back-end:** [Express server](https://github.com/ollk/carpe-duo-server) with PostgresSQL database
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Upcoming Changes
+* Improved mobile compatibility 
+* EVENTS: pre-scheduled plans and obligations that cannot be moved like Tasks
+* Ability to export finished schedule to calendar

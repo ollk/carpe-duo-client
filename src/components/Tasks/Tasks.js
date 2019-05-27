@@ -12,7 +12,6 @@ export default class Tasks extends Component {
   state = {
     dragId: null,
     offset: 0,
-    // userTasks: []
   }
 
 
@@ -24,16 +23,6 @@ export default class Tasks extends Component {
 
   }
 
-  
-
-  // componentDidMount() {
-  //   const userTasks = this.props.userTasks
-
-  //   console.log('Tasks.js userTasks', userTasks)
-  //   console.log('Tasks.js context tasks', this.context.userTasks)
-
-  //   this.setState({userTasks})
-  // }
 
   getTaskById(taskId) {
     return this.context.userTasks.find(task => task.id === taskId)
@@ -79,28 +68,7 @@ export default class Tasks extends Component {
         this.context.deleteUserTask(taskId[0])
       })
   }
-  // trying without sorting
-  // map this.sortTasks(tasks) to reintroduce
-  
-  // sortTasks(tasks) {
-  //   const sortedTasks = [];
-  //   tasks.map(task => {
-  //     if (task.priority === 'high') {
-  //       sortedTasks.push(task)
-  //     }
-  //   })
-  //   tasks.map(task => {
-  //     if (task.priority === 'medium') {
-  //       sortedTasks.push(task)
-  //     }
-  //   })
-  //   tasks.map(task => {
-  //     if (task.priority === 'low') {
-  //       sortedTasks.push(task)
-  //     }
-  //   })
-  //   return sortedTasks;
-  // }
+ 
 
   offset = 0;
 
@@ -115,28 +83,13 @@ export default class Tasks extends Component {
     }
   }
 
-  // positionTask(task) {
-  //   if (!task.scheduled) {
-  //     const pos = {Position:{x: 0, y: this.offset}};
-  //     this.offset = this.offset + task.duration;
-  //     return pos 
-  //   } 
-  //   if (task.scheduled) {
-  //     return {defaultPosition:{x: -170, y: task.position}};
-  //   }
-  // }
 
-
-  //prevent scroll attempts
-  //
-  // onDrag={this.handleDrag.bind(this)}
   handleDrag(e) {
     e.preventDefault();
     console.log('dragging');
   }
   
   renderTasks() {
-    //const tasks = this.context.userTasks;
     console.log('rendering tasks', this.context)
     const tasks = this.context.userTasks.map(task => 
       <Draggable

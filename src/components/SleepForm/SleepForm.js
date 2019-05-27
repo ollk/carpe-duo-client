@@ -120,7 +120,7 @@ export default class SleepForm extends Component {
       .then(() => {
         console.log('push')
         this.props.history.push(this.chooseLinkPath()) 
-        //need to reload page to reset draggable library built in state
+        //need to reload page to reset draggable library built-in state
         window.location.reload()
     })
       .catch(this.context.setError)

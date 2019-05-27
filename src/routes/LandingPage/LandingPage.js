@@ -11,8 +11,7 @@ export default class LandingPage extends Component {
     return (
       <>
         <Header />
-
-
+        
         <header role='banner' className='banner'>
           <h1>Carpe Duo</h1>
           <p>Seize the Weekend</p>
