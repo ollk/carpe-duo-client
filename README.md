@@ -1,6 +1,9 @@
 # Carpe Duo
 
-[Link to live app](https://carpeduo.scottcolemanwilliams.now.sh/)
+### [Link to live app](https://carpeduo.scottcolemanwilliams.now.sh/)
+### Demo Credentials:
+Username: demo  
+Password: Abc123!!
 
 ### Overview
 Carpe Duo is a React app built to help users organize and schedule a productive weekend.  Designed to supplement a conventional calendar app, Carpe Duo allows the user to first create a list of weekend tasks, then drag and drop these tasks into and around a weekend timeline to create a weekend schedule.  It's a dynamic to-do list and scheduling tool.
