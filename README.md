@@ -1,6 +1,6 @@
 # Carpe Duo
 
-### [Link to live app](https://carpeduo.scottcolemanwilliams.now.sh/)
+### [Link to live app](https://carpe-duo.now.sh/)
 ### Demo Credentials:
 Username: demo  
 Password: Abc123!!
