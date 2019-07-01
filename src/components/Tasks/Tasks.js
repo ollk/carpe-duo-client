@@ -57,7 +57,7 @@ export default class Tasks extends Component {
   //prevent scroll attempt
   preventScroll(e) {
     e.preventDefault()
-    console.log('dragging')
+    // console.log('dragging')
     //alert('dragging')
   }
 
@@ -85,7 +85,7 @@ export default class Tasks extends Component {
   //prevent scroll attempt
   handleDrag(e) {
     e.preventDefault();
-    console.log('dragging');
+    // console.log('dragging');
   }
   
   renderTasks() {
@@ -108,7 +108,7 @@ export default class Tasks extends Component {
             position: 'absolute'
           }}
         >
-          <p className='handle' >{task.task_name}</p>
+          <p className='handle' >{task.task_name.slice(0, 12)}</p>
           <button 
           className='delete-task'
           onClick={() => this.handleDelete(task.id)}>

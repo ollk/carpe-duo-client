@@ -10,7 +10,7 @@ const IdleService = {
   },
 
   resetIdleTimer(ev) {
-    console.info('event:', ev.type)
+    // console.info('event:', ev.type)
     clearTimeout(_timeoutId)
     _timeoutId = setTimeout(_idleCallback, _TEN_MINUTES_IN_MS)
   },

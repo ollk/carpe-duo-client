@@ -84,7 +84,7 @@ export default class LoginPage extends Component {
               </label>
               <input 
                 required 
-                type='text'
+                type='password'
                 name='password' 
                 id='LoginForm-password'
               />

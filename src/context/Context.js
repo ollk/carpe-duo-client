@@ -70,7 +70,7 @@ export class ContextProvider extends Component {
   
 
   setError = error => {
-    console.error(error)
+    // console.error(error)
     this.setState({ error })
   }
 
