@@ -108,7 +108,7 @@ export default class Tasks extends Component {
             position: 'absolute'
           }}
         >
-          <p className='handle' >{task.task_name.slice(0, 12)}</p>
+          <p className='handle' >{task.task_name.slice(0, 15)}</p>
           <button 
           className='delete-task'
           onClick={() => this.handleDelete(task.id)}>
